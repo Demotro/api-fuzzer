@@ -1,0 +1,158 @@
+{
+    "target_url": "https://httpbin.org/get?q=FUZZ",
+    "payload_file": "payloads.txt",
+    "threads": 10,
+    "timeout": 5,
+    "tested_payloads": 16,
+    "suspicious_count": 2,
+    "results": [
+        {
+            "payload": "-1",
+            "url": "https://httpbin.org/get?q=-1",
+            "status_code": 200,
+            "response_size": 330,
+            "response_time": 1.118,
+            "findings": [],
+            "error": null
+        },
+        {
+            "payload": "0",
+            "url": "https://httpbin.org/get?q=0",
+            "status_code": 200,
+            "response_size": 328,
+            "response_time": 1.656,
+            "findings": [],
+            "error": null
+        },
+        {
+            "payload": "123",
+            "url": "https://httpbin.org/get?q=123",
+            "status_code": 200,
+            "response_size": 332,
+            "response_time": 1.413,
+            "findings": [],
+            "error": null
+        },
+        {
+            "payload": "999999",
+            "url": "https://httpbin.org/get?q=999999",
+            "status_code": 200,
+            "response_size": 338,
+            "response_time": 0.94,
+            "findings": [],
+            "error": null
+        },
+        {
+            "payload": "admin",
+            "url": "https://httpbin.org/get?q=admin",
+            "status_code": 200,
+            "response_size": 336,
+            "response_time": 1.346,
+            "findings": [],
+            "error": null
+        },
+        {
+            "payload": "demo",
+            "url": "https://httpbin.org/get?q=demo",
+            "status_code": 200,
+            "response_size": 334,
+            "response_time": 1.854,
+            "findings": [],
+            "error": null
+        },
+        {
+            "payload": "empty",
+            "url": "https://httpbin.org/get?q=empty",
+            "status_code": 200,
+            "response_size": 336,
+            "response_time": 1.732,
+            "findings": [],
+            "error": null
+        },
+        {
+            "payload": "example",
+            "url": "https://httpbin.org/get?q=example",
+            "status_code": 200,
+            "response_size": 340,
+            "response_time": 1.193,
+            "findings": [],
+            "error": null
+        },
+        {
+            "payload": "false",
+            "url": "https://httpbin.org/get?q=false",
+            "status_code": 200,
+            "response_size": 336,
+            "response_time": 1.899,
+            "findings": [],
+            "error": null
+        },
+        {
+            "payload": "guest",
+            "url": "https://httpbin.org/get?q=guest",
+            "status_code": 200,
+            "response_size": 336,
+            "response_time": 1.462,
+            "findings": [],
+            "error": null
+        },
+        {
+            "payload": "longtextlongtextlongtextlongtext",
+            "url": "https://httpbin.org/get?q=longtextlongtextlongtextlongtext",
+            "status_code": 200,
+            "response_size": 390,
+            "response_time": 1.259,
+            "findings": [],
+            "error": null
+        },
+        {
+            "payload": "null",
+            "url": "https://httpbin.org/get?q=null",
+            "status_code": 200,
+            "response_size": 334,
+            "response_time": 1.457,
+            "findings": [],
+            "error": null
+        },
+        {
+            "payload": "search",
+            "url": "https://httpbin.org/get?q=search",
+            "status_code": 200,
+            "response_size": 338,
+            "response_time": 1.472,
+            "findings": [],
+            "error": null
+        },
+        {
+            "payload": "test",
+            "url": "https://httpbin.org/get?q=test",
+            "status_code": 200,
+            "response_size": 334,
+            "response_time": 1.423,
+            "findings": [],
+            "error": null
+        },
+        {
+            "payload": "true",
+            "url": "https://httpbin.org/get?q=true",
+            "status_code": 200,
+            "response_size": 334,
+            "response_time": 2.094,
+            "findings": [
+                "SLOW_RESPONSE"
+            ],
+            "error": null
+        },
+        {
+            "payload": "user",
+            "url": "https://httpbin.org/get?q=user",
+            "status_code": 200,
+            "response_size": 334,
+            "response_time": 2.306,
+            "findings": [
+                "SLOW_RESPONSE"
+            ],
+            "error": null
+        }
+    ]
+}
