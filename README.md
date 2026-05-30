@@ -30,8 +30,7 @@ api-fuzzer/
 ├── payloads.txt
 ├── requirements.txt
 ├── README.md
-├── report.json
-└── .gitignore
+└── report.json
 ```
 
 ## Installation
