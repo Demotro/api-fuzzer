@@ -1,37 +1,56 @@
 # API Fuzzer & Response Analyzer CLI
 
-A modular Python command-line tool for basic API fuzzing and response analysis. The tool injects payloads into a target URL, sends HTTP requests, measures response time and response size, detects suspicious responses, and supports JSON report export.
+A modular command-line tool for basic API fuzzing and response analysis, built with Python.
+
+The project sends test payloads to API endpoints, measures response time and response size, detects suspicious responses, supports multithreaded execution and exports scan results into a JSON report.
+
+## Highlights
+
+- Modular Python project split into multiple files
+- Payload-based API endpoint testing
+- Response analysis based on status code, response time and response size
+- Suspicious response detection
+- Multithreaded request execution
+- Configurable timeout, payload file and thread count
+- Centralized configuration in `config.py`
+- JSON report export
+- Input validation and error handling
 
 ## Features
 
-- Replaces the `FUZZ` marker in a target URL with payloads
-- Loads payloads from a text file
-- Sends HTTP GET requests
-- Measures response time
-- Measures response size
-- Detects suspicious HTTP status codes
-- Detects slow responses
-- Detects large responses
-- Uses multithreading for faster scanning
-- Supports custom payload file, thread count, and timeout
-- Exports results to a JSON report
-- Handles timeouts, request errors, invalid thread values, invalid timeout values, and missing payload files
+- Replace the `FUZZ` marker in a target URL with payloads
+- Load payloads from a text file
+- Send HTTP GET requests
+- Measure response time
+- Measure response size
+- Detect suspicious HTTP status codes
+- Detect slow responses
+- Detect large responses
+- Handle request timeouts and request errors
+- Export detailed results to a JSON report
+
+## Technologies
+
+- Python
+- requests
+- argparse
+- concurrent.futures
+- JSON
+- HTTP
+- API testing
+- Modular project structure
 
 ## Project Structure
 
-```text
-api-fuzzer/
-├── main.py
-├── fuzzer.py
-├── analyzer.py
-├── reporter.py
-├── utils.py
-├── config.py
-├── payloads.txt
-├── requirements.txt
-├── README.md
-└── report.json
-```
+- `main.py` - command-line interface and argument handling
+- `fuzzer.py` - request sending, payload execution and multithreading
+- `analyzer.py` - response analysis and finding detection
+- `reporter.py` - terminal output and JSON report export
+- `utils.py` - helper functions for payload loading and URL handling
+- `config.py` - project configuration and detection thresholds
+- `payloads.txt` - test payloads
+- `requirements.txt` - project dependencies
+- `report.json` - example JSON scan report
 
 ## Installation
 
@@ -47,15 +66,41 @@ On Windows:
 py -m pip install -r requirements.txt
 ```
 
+## How It Works
+
+The tool requires a target URL containing the `FUZZ` marker.
+
+Example:
+
+```bash
+py main.py "https://httpbin.org/get?q=FUZZ"
+```
+
+The program replaces `FUZZ` with each payload from `payloads.txt`.
+
+For each generated request, the tool records:
+
+- HTTP status code
+- response size
+- response time
+- detected findings
+- request errors, if any
+
+Responses are analyzed and marked with findings when they match configured suspicious conditions.
+
+## Findings
+
+The analyzer can mark responses with the following findings:
+
+- `SUSPICIOUS_STATUS_CODE` - returned status code is commonly associated with server-side errors
+- `SLOW_RESPONSE` - response time is higher than the configured threshold
+- `LARGE_RESPONSE` - response size is higher than the configured threshold
+- `TIMEOUT` - request exceeded the configured timeout
+- `REQUEST_ERROR` - request failed because of a connection or request error
+
 ## Usage
 
 Basic scan:
-
-```bash
-python main.py "https://httpbin.org/get?q=FUZZ"
-```
-
-On Windows:
 
 ```bash
 py main.py "https://httpbin.org/get?q=FUZZ"
@@ -67,19 +112,19 @@ Scan with JSON export:
 py main.py "https://httpbin.org/get?q=FUZZ" --json report.json
 ```
 
-Scan with custom thread count:
+Custom thread count:
 
 ```bash
 py main.py "https://httpbin.org/get?q=FUZZ" --threads 5
 ```
 
-Scan with custom timeout:
+Custom timeout:
 
 ```bash
 py main.py "https://httpbin.org/get?q=FUZZ" --timeout 10
 ```
 
-Use a custom payload file:
+Custom payload file:
 
 ```bash
 py main.py "https://httpbin.org/get?q=FUZZ" --payloads payloads.txt
@@ -105,39 +150,42 @@ Tested payloads: 16
 Suspicious responses: 0
 ```
 
-## Findings
+## JSON Report
 
-The analyzer can mark responses with the following findings:
+The tool can export scan results into a JSON file.
 
-```text
-SUSPICIOUS_STATUS_CODE
-SLOW_RESPONSE
-LARGE_RESPONSE
-TIMEOUT
-REQUEST_ERROR
-```
+The report includes:
 
-## Example JSON Report
+- target URL
+- payload file
+- thread count
+- timeout
+- tested payload count
+- suspicious response count
+- tested payloads
+- generated URLs
+- HTTP status codes
+- response sizes
+- response times
+- findings
+- errors
 
-The tool can export scan results into a JSON file:
+## Configuration
 
-```bash
-py main.py "https://httpbin.org/get?q=FUZZ" --json report.json
-```
+Detection thresholds and default values are stored in `config.py`.
 
-The report contains information such as the target URL, payload file, thread count, timeout, tested payloads, suspicious response count, status codes, response sizes, response times, findings, and errors.
+The project includes configurable values such as:
 
-## Technologies Used
-
-- Python
-- requests
-- argparse
-- concurrent.futures
-- JSON
-- HTTP
-- API testing
-- Modular project structure
+- `FUZZ` marker
+- default payload file
+- default timeout
+- default thread count
+- suspicious status codes
+- slow response threshold
+- large response threshold
 
 ## Disclaimer
 
 This tool is intended for educational purposes and basic API security testing only.
+
+Only test APIs that you own or have permission to test.
