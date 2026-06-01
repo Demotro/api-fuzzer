@@ -50,6 +50,7 @@ The project sends test payloads to API endpoints, measures response time and res
 - `config.py` - project configuration and detection thresholds
 - `payloads.txt` - test payloads
 - `requirements.txt` - project dependencies
+- `README.md` - project documentation
 - `report.json` - example JSON scan report
 
 ## Installation
