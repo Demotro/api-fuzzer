@@ -187,5 +187,3 @@ The project includes configurable values such as:
 ## Disclaimer
 
 This tool is intended for educational purposes and basic API security testing only.
-
-Only test APIs that you own or have permission to test.
