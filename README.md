@@ -1,6 +1,6 @@
 # API Fuzzer & Response Analyzer CLI
 
-A modular command-line tool for basic API fuzzing and response analysis, built with Python.
+A modular command-line tool for API fuzzing and response analysis, built with Python.
 
 The project sends test payloads to API endpoints, measures response time and response size, detects suspicious responses, supports multithreaded execution and exports scan results into a JSON report.
 
@@ -186,4 +186,4 @@ The project includes configurable values such as:
 
 ## Disclaimer
 
-This tool is intended for educational purposes and basic API security testing only.
+This tool is intended for educational purposes and API security testing only.
