@@ -92,7 +92,7 @@ Responses are analyzed and marked with findings when they match configured suspi
 
 The analyzer can mark responses with the following findings:
 
-- `SUSPICIOUS_STATUS_CODE` - returned status code is commonly associated with server-side errors
+- `SUSPICIOUS_STATUS_CODE` - response returned a server-side error status code
 - `SLOW_RESPONSE` - response time is higher than the configured threshold
 - `LARGE_RESPONSE` - response size is higher than the configured threshold
 - `TIMEOUT` - request exceeded the configured timeout
